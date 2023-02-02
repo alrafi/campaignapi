@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"campaignapi/helper"
 	"campaignapi/user"
 	"net/http"
 
@@ -28,5 +29,6 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, nil)
 	}
 
-	c.JSON(http.StatusOK, user)
+	response := helper.APIResponse("User has been registered", 200, "success", user)
+	c.JSON(http.StatusOK, response)
 }
